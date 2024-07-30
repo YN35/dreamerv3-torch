@@ -10,7 +10,7 @@
     ],
     "mounts": [
         "source=/home/ynn/code/search/dreamerv3-torch,target=/home/root/dreamerv3-torch,type=bind",
-        "source=/mnt/data1/ynn/expertdata,target=/expertdata,type=bind"
+        "source=/mnt/data2/ynn/expertdata,target=/expertdata,type=bind"
     ],
     "workspaceFolder": "/home/root/dreamerv3-torch",
     "customizations": {
