@@ -16,17 +16,19 @@
 
 # System
 FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
+USER root
+
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/San_Francisco
 ENV PYTHONUNBUFFERED 1
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV PIP_NO_CACHE_DIR 1
 RUN apt-get update && apt-get install -y \
-    vim libglew2.1 libgl1-mesa-glx libosmesa6 \
+    git vim libglew2.1 libgl1-mesa-glx libosmesa6 \
     wget unrar cmake g++ libgl1-mesa-dev \
     libx11-6 openjdk-8-jdk x11-xserver-utils xvfb \
     && apt-get clean
-RUN pip3 install --upgrade pip
+RUN pip install pip==24.0 setuptools==59.5.0 wheel==0.34.2
 
 # Envs
 ENV NUMBA_CACHE_DIR=/tmp
@@ -54,5 +56,8 @@ RUN cd .. && rm -rf roms
 RUN pip3 install memory_maze==1.0.3
 
 # minecraft setup
-RUN pip3 install minerl==0.4.4
+RUN pip3 install minedojo==0.1
 RUN pip3 install numpy==1.21.0
+
+# upgrade pip
+RUN pip3 install --upgrade pip
