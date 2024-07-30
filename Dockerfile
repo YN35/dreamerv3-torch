@@ -44,9 +44,9 @@ RUN pip3 install moviepy
 RUN pip3 install crafter==1.8.0
 
 # atari setup
+RUN pip install opencv-python==4.6.0.66
 RUN pip3 install gym[atari]==0.19.0
 RUN pip3 install atari-py==0.2.9
-RUN pip3 install opencv-python==4.7.0.72
 RUN mkdir roms && cd roms
 RUN wget -L -nv http://www.atarimania.com/roms/Roms.rar
 RUN unrar x -o+ Roms.rar
@@ -57,8 +57,7 @@ RUN cd .. && rm -rf roms
 RUN pip3 install memory_maze==1.0.3
 
 # minecraft setup
-RUN pip3 install minedojo==0.1
-RUN pip install opencv-python==4.6.0.66
+RUN pip3 install git+https://github.com/minerllabs/minerl
 RUN pip3 install numpy==1.21.0
 
 # upgrade pip
